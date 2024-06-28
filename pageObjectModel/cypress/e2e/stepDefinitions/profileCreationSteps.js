@@ -1,4 +1,4 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
 import ProfileCreatePage from '../Pages/profileCreate.cy.js';
 import SignInPage from '../Pages/sign-inPage.cy.js'; 
 
@@ -13,17 +13,17 @@ Given('I am on the profile creation page', () => {
   cy.visit('https://testingtasks.kwentra.com/frontoffice/#/profileslist/add');
 });
 
-When('I enter {string} as the first name', (firstName) => {
+When('I enter "Ahmed" as the first name', (firstName) => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.enterFirstName(firstName);
 });
 
-When('I enter {string} as the last name', (lastName) => {
+And('I enter "zidan" as the last name', (lastName) => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.enterLastName(lastName);
 });
 
-When('I click the "Save" button', () => {
+And('I click the "Save" button', () => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.clickSave();
 });
@@ -55,7 +55,7 @@ Then('I should see an error message for the first name field', () => {
   profileCreatePage.firstNameError().should('be.visible');
 });
 
-Then('I should see an error message for the last name field', () => {
+And('I should see an error message for the last name field', () => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.lastNameError().should('be.visible');
 });
@@ -71,7 +71,7 @@ Given('I am on the profile creation page', () => {
   cy.visit('https://testingtasks.kwentra.com/frontoffice/#/profileslist/add');
 });
 
-When('I enter {string} as the email', (email) => {
+When('I enter "test" as the email', (email) => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.enterEmail(email);
   profileCreatePage.clickSave();
@@ -81,7 +81,7 @@ Then('the email field should be marked as invalid', () => {
   cy.get('#email-field').should('have.class', 'error');
 });
 
-Then('I should see an error message for the email field related to the pattern', () => {
+And('I should see an error message for the email field related to the pattern', () => {
   const profileCreatePage = new ProfileCreatePage();
   profileCreatePage.emailError();
   profileCreatePage.emailpatternError();

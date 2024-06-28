@@ -17,6 +17,5 @@ Feature: Profile Creation
   Scenario: Save profile with invalid email format
     Given I am on the profile creation page
     When I enter "test" as the email 
-    And I click the "Save" button
     Then the email field should be marked as invalid
     And I should see an error message for the email field related to the pattern
